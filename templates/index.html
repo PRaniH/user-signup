@@ -3,7 +3,7 @@
 {% block content %}
 
 <!--Below is from the example web page source code.-->
-<form action="/validate-user-input" method="post">
+<form action="/" method="post">
             <table>
                 <tr>
                     <td><label for="username">Username</label></td>
@@ -22,7 +22,8 @@
                 <tr>
                     <td><label for="verify">Verify Password</label></td>
                     <td>
-                        <input id = "verify" name="verify" type="password"></>
+                        <input id = "verify" name="verify" type="password"
+                        ></>
                         <span class="error">{{verify_error}}</span>
                     </td>
                 </tr>
