@@ -47,7 +47,7 @@ def is_ok_characters(input_string):
 #characters or more than 20 characters (e.g., a username or password of "me" would be invalid).
 
 
-@app.route("/validate-user-input", methods=['POST'])
+@app.route("/", methods=['POST'])
 def validate_user_input(): 
     username = request.form['username'] #Note that this does not seem to be saving the spaces if any entered by user
     password = request.form['password']
@@ -119,9 +119,12 @@ message of: "Welcome, [username]!" """
     if (username_error or password_error or verify_error or email_error):
         return render_template('index.html', username=username, username_error=username_error, password_error=password_error, verify_error=verify_error, email=email, email_error=email_error)
     else:
-        return render_template('welcome.html', username=username)
+        return redirect("/welcome?username=" + username)
 
-
+@app.route("/welcome")
+def welcome():
+    username = request.args.get("username")
+    return render_template('welcome.html', username=username)
 
 @app.route("/")
 def index():
